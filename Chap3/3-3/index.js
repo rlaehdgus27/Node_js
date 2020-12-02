@@ -1,3 +1,5 @@
+//모듈화
+
 const { odd, even } = require("./var");
 const checkNumber = require("./func");
 
