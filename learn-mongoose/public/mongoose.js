@@ -121,7 +121,7 @@ document.getElementById("user-form").addEventListener("submit", async (e) => {
 
   const name = e.target.username.value;
   const age = e.target.age.value;
-  const married = e.target.married.value;
+  const married = e.target.married.checked;
 
   if (!name) {
     return alert("이름을 입력하세요");
@@ -146,8 +146,8 @@ document
   .addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const id = e.target.username.value;
-    const comment = e.target.username.value;
+    const id = e.target.userid.value;
+    const comment = e.target.comment.value;
 
     if (!id) {
       return alert("아이디를 입력하세요");
