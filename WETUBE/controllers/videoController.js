@@ -32,7 +32,6 @@ export const postUpload = async (req, res) => {
     title,
     description,
   });
-  console.log(newVideo);
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
