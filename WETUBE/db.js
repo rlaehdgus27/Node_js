@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL, {
+  dbName: "wetube",
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
