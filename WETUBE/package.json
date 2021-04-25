@@ -20,9 +20,11 @@
   },
   "scripts": {
     "dev:server": "nodemon --exec babel-node init.js --delay 1",
-    "dev:assets": "webpack"
+    "dev:assets": "WEBPACK_ENV=development webpack",
+    "build:assets": "WEBPACK_ENV=production webpack"
   },
   "devDependencies": {
+    "mini-css-extract-plugin": "^1.5.0",
     "nodemon": "^2.0.7",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0"
