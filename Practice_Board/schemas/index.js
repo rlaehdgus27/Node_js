@@ -7,7 +7,7 @@ const connect = () => {
   mongoose.connect(
     "mongodb://root:qwer1234@localhost:27017/admin",
     {
-      dbName: "nodejs",
+      dbName: "studynode",
       useNewUrlParser: true,
       useCreateIndex: true,
     },
