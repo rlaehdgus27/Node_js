@@ -21,9 +21,10 @@ router.post("/create", async (req, res, next) => {
 
 router.get("/users/:id", async (req, res, next) => {
   try {
-    const user = await User.findOne({ id: req.params.id });
+    const user = await User.findOne({ _id: req.params.id });
 
-    console.log(user);
+    user.hit = user.hit + 1;
+    await user.save();
 
     res.json(user);
   } catch (err) {

@@ -14,8 +14,6 @@ const Home = ({ history }) => {
     history.push(link);
   };
 
-  console.log(users);
-
   useEffect(() => {
     notice();
   }, []);

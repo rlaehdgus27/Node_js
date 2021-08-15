@@ -44,7 +44,6 @@ const Create = ({ history }) => {
   useEffect(() => {
     create();
   }, []);
-
   return (
     <div class="container">
       <h2>게시글 등록</h2>
