@@ -12,7 +12,7 @@ router.post("/create", async (req, res, next) => {
       author: req.body.author,
       // createdAt: req.body.createdAt,
     });
-    res.status(201).json(user);
+    res.status(201).json();
   } catch (err) {
     console.error(err);
     next(err);
