@@ -14,37 +14,68 @@ router.get("/users", async (req, res, next) => {
   }
 });
 
-// router.post("/create", async (req, res, next) => {
-//   try {
-//     const user = await User.create({
-//       title: req.body.title,
-//       content: req.body.content,
-//       // hit: req.body.hit,
-//       author: req.body.author,
-//       // createdAt: req.body.createdAt,
-//     });
-//     res.status(201).json(user);
-//   } catch (err) {
-//     console.error(err);
-//     next(err);
-//   }
-// });
+router.post("/create", async (req, res, next) => {
+  const { title, content, author } = req.body;
 
-// router.get("/users/:id", async (req, res, next) => {
-//   console.log("asldhakdj");
-//   console.log("asldhakdj");
-//   console.log("asldhakdjßß  ");
+  try {
+    const user = await User.create({
+      title,
+      content,
+      author,
+    });
+    res.status(201).json(user);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
-//   try {
-//     const user = await User.findOne({ _id: req.params.id });
+router.get("/users/:id", async (req, res, next) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
 
-//     console.log(user);
+    user.hit = user.hit + 1;
+    await user.save();
 
-//     res.json(user);
-//   } catch (err) {
-//     console.error(err);
-//     next(err);
-//   }
-// });
+    res.json(user);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
+
+router.patch("/update/:id", async (req, res, next) => {
+  const { content } = req.body;
+
+  try {
+    const result = await User.updateOne(
+      {
+        _id: req.params.id,
+      },
+      {
+        content,
+      }
+    );
+
+    res.status(201).json(result);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+});
+
+router.get("/delete/:id", async (req, res, next) => {
+  try {
+    const user = await User.findOne({ _id: req.params.id });
+
+    user.isDelete = true;
+    await user.save();
+
+    res.status(201).json(user);
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
+});
 
 export default router;
