@@ -4,37 +4,6 @@ import axios from "axios";
 const Create = ({ history }) => {
   const create = async () => {
     // await axios.get("http://127.0.0.1:4000/create");
-    document
-      .getElementById("create-form")
-      .addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const title = e.target.title.value;
-        const content = e.target.content.value;
-        const author = e.target.author.value;
-
-        if (!title) {
-          return alert("제목 입력하세요");
-        }
-        if (!content) {
-          return alert("내용을 입력하세요");
-        }
-        if (!author) {
-          return alert("직성자 입력하세요");
-        }
-        try {
-          await axios.post("/user/create", {
-            title,
-            content,
-            author,
-          });
-        } catch (err) {
-          console.error(err);
-        }
-        e.target.title.value = "";
-        e.target.content.value = "";
-        e.target.author.value = "";
-      });
   };
 
   const moveLinkHandler = (link) => {
