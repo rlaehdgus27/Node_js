@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import axios from "axios";
 import useInput from "../hooks/useInput";
 import { Form } from "antd";
@@ -20,6 +20,18 @@ const Update = ({ history, match }) => {
       history.goBack();
     }
   }, [contentInput]);
+
+  const updateDetail = async () => {
+    const result = await axios.get(
+      `http://127.0.0.1:4000/users/${match.params.id}`
+    );
+
+    contentInput.setValue(result.data.content);
+  };
+
+  useEffect(() => {
+    updateDetail();
+  }, []);
 
   return (
     <div class="container">
